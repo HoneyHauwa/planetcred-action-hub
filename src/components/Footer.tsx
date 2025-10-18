@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Leaf, Mail, Heart } from "lucide-react";
+import { Mail, Heart } from "lucide-react";
+import logo from "@/assets/planetcred-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="p-2 rounded-lg gradient-hero">
-                <Leaf className="h-5 w-5 text-white" />
-              </div>
+              <img src={logo} alt="PlanetCred Logo" className="h-10 w-10 object-contain" />
               <span className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 PlanetCred
               </span>

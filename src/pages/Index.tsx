@@ -4,6 +4,7 @@ import Welcome from "@/components/Welcome";
 import MissionsPreview from "@/components/MissionsPreview";
 import Stats from "@/components/Stats";
 import About from "@/components/About";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -16,6 +17,7 @@ const Index = () => {
         <MissionsPreview />
         <Stats />
         <About />
+        <WhatsAppCommunity />
       </main>
       <Footer />
     </div>

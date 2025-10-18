@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/planetcred-logo.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -12,9 +12,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="p-2 rounded-lg gradient-hero">
-              <Leaf className="h-6 w-6 text-white" />
-            </div>
+            <img src={logo} alt="PlanetCred Logo" className="h-12 w-12 object-contain" />
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               PlanetCred
             </span>
