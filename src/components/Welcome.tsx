@@ -10,7 +10,7 @@ const Welcome = () => {
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             PlanetCred is a youth-led initiative designed to make everyday climate actions visible, verified, and valuable. 
-            We empower young changemakers by turning their environmental efforts—from planting trees to organizing awareness campaigns—into 
+            We empower young changemakers by turning their environmental efforts from planting trees to organizing awareness campaigns into 
             certified credentials that open doors to scholarships, fellowships, and leadership opportunities.
           </p>
         </div>
