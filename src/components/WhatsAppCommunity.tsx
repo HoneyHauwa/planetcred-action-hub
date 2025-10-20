@@ -66,7 +66,7 @@ const WhatsAppCommunity = () => {
               className="shadow-xl"
             >
               <a 
-                href="https://chat.whatsapp.com/your-community-link" 
+                href="https://chat.whatsapp.com/Db0lPdOMt8kHkAhpFUWDJu?mode=wwt" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2"
