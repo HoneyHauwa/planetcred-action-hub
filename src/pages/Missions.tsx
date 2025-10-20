@@ -1,3 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -6,6 +10,29 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Calendar, Users, TreePine, Recycle, Megaphone, Droplet, BookOpen, Heart } from "lucide-react";
 
 const Missions = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleJoinMission = (title: string, description: string) => {
+    if (!user) {
+      navigate("/auth");
+      return;
+    }
+    navigate(`/mission-submit?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`);
+  };
+
   const missions = [
     {
       id: 1,
@@ -144,7 +171,11 @@ const Missions = () => {
                   </div>
                 </div>
                 
-                <Button className="w-full" variant="hero">
+                <Button 
+                  className="w-full" 
+                  variant="hero"
+                  onClick={() => handleJoinMission(mission.title, mission.description)}
+                >
                   Join Mission
                 </Button>
               </Card>

@@ -1,11 +1,34 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
+import { User as UserIcon, LogOut } from "lucide-react";
 import logo from "@/assets/planetcred-logo.png";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
   
   const isActive = (path: string) => location.pathname === path;
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -41,9 +64,31 @@ const Navbar = () => {
             >
               About
             </Link>
-            <Button asChild variant="hero" size="default">
-              <Link to="/missions">Get Started</Link>
-            </Button>
+            {user && (
+              <Link 
+                to="/dashboard" 
+                className={`font-medium transition-colors hover:text-primary ${
+                  isActive("/dashboard") ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                Dashboard
+              </Link>
+            )}
+            {user ? (
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="icon" onClick={() => navigate("/dashboard")}>
+                  <UserIcon className="w-5 h-5" />
+                </Button>
+                <Button variant="outline" size="sm" onClick={handleLogout}>
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <Button asChild variant="hero" size="default">
+                <Link to="/auth">Get Started</Link>
+              </Button>
+            )}
           </div>
           
           {/* Mobile menu button */}
