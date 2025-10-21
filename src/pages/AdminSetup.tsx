@@ -20,11 +20,6 @@ const AdminSetup = () => {
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        navigate("/auth");
-        return;
-      }
-
       setUser(user);
 
       // Check if any admins exist
@@ -43,7 +38,7 @@ const AdminSetup = () => {
     };
 
     checkAuth();
-  }, [navigate]);
+  }, []);
 
   const handleMakeAdmin = async () => {
     if (!user) return;
@@ -109,6 +104,15 @@ const AdminSetup = () => {
                   </p>
                   <Button onClick={() => navigate("/")}>
                     Return to Home
+                  </Button>
+                </div>
+              ) : !user ? (
+                <div className="text-center py-8">
+                  <p className="text-muted-foreground mb-4">
+                    Please log in or sign up first to become an admin.
+                  </p>
+                  <Button onClick={() => navigate("/auth")}>
+                    Go to Login
                   </Button>
                 </div>
               ) : (
