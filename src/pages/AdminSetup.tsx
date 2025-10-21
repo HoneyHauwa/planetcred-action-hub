@@ -45,11 +45,27 @@ const AdminSetup = () => {
 
     setMaking(true);
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      
       const { error } = await supabase.functions.invoke('make-admin', {
         body: { userId: user.id },
+        headers: {
+          Authorization: `Bearer ${session?.access_token}`,
+        },
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message?.includes('super admin')) {
+          toast({
+            title: "Access Denied",
+            description: "Only the super admin can manage admin roles",
+            variant: "destructive",
+          });
+        } else {
+          throw error;
+        }
+        return;
+      }
 
       toast({
         title: "Success!",

@@ -46,7 +46,7 @@ serve(async (req) => {
 
     // Only allow hauwa1602@gmail.com to manage admins
     if (user.email !== 'hauwa1602@gmail.com') {
-      console.error('Unauthorized user attempted to make admin:', user.email);
+      console.error('Unauthorized user attempted to remove admin:', user.email);
       return new Response(
         JSON.stringify({ error: 'Only the super admin can manage admin roles' }),
         { 
@@ -58,27 +58,24 @@ serve(async (req) => {
 
     const { userId } = await req.json();
 
-    console.log('Making user admin:', userId);
+    console.log('Removing admin role from user:', userId);
 
-    // Insert admin role
+    // Delete admin role
     const { error } = await supabase
       .from('user_roles')
-      .upsert({ 
-        user_id: userId, 
-        role: 'admin' 
-      }, {
-        onConflict: 'user_id,role'
-      });
+      .delete()
+      .eq('user_id', userId)
+      .eq('role', 'admin');
 
     if (error) {
-      console.error('Error making user admin:', error);
+      console.error('Error removing admin role:', error);
       throw new Error(error.message);
     }
 
-    console.log('User successfully made admin');
+    console.log('Admin role successfully removed');
 
     return new Response(
-      JSON.stringify({ success: true, message: 'User is now an admin' }),
+      JSON.stringify({ success: true, message: 'Admin role removed' }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
