@@ -214,6 +214,19 @@ const Auth = () => {
               </form>
             </TabsContent>
           </Tabs>
+
+          <div className="mt-4 text-center">
+            <p className="text-sm text-muted-foreground">
+              Need to set up admin access?{" "}
+              <button
+                type="button"
+                onClick={() => navigate("/admin-setup")}
+                className="text-primary hover:underline font-medium"
+              >
+                Admin Setup
+              </button>
+            </p>
+          </div>
         </CardContent>
       </Card>
     </div>
