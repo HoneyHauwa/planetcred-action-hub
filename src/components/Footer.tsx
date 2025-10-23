@@ -48,11 +48,11 @@ const Footer = () => {
           <div>
             <h3 className="font-bold mb-4">Get In Touch</h3>
             <a 
-              href="mailto:contact@planetcred.org" 
+              href="mailto:planetcredential@gmail.com" 
               className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="h-4 w-4" />
-              <span>contact@planetcred.org</span>
+              <span>planetcredential@gmail.com</span>
             </a>
           </div>
         </div>
