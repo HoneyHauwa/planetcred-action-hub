@@ -5,19 +5,19 @@ const Stats = () => {
   const stats = [
     {
       icon: Users,
-      number: "5,000+",
+      number: "15+",
       label: "Active Participants",
       color: "text-primary"
     },
     {
       icon: Globe,
-      number: "50+",
+      number: "2+",
       label: "Communities Reached",
       color: "text-secondary"
     },
     {
       icon: Target,
-      number: "12,000+",
+      number: "7+",
       label: "Missions Completed",
       color: "text-accent"
     }
