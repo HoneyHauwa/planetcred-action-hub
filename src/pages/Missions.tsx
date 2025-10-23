@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Calendar, Users, TreePine, Recycle, Megaphone, Droplet, BookOpen, Heart } from "lucide-react";
+import { MapPin, Calendar, Users, TreePine, Recycle, Megaphone, Droplet, Palette, Leaf, Video, Lightbulb } from "lucide-react";
 
 const Missions = () => {
   const navigate = useNavigate();
@@ -36,69 +36,102 @@ const Missions = () => {
   const missions = [
     {
       id: 1,
-      title: "Urban Tree Planting Initiative",
-      description: "Join us in planting native trees across urban neighborhoods to combat climate change and improve air quality.",
-      icon: TreePine,
-      location: "Downtown Community Park, New York",
-      timeframe: "March 15-30, 2025",
-      participants: 45,
-      badge: "Junior",
-      category: "Forestry"
-    },
-    {
-      id: 2,
-      title: "Coastal Cleanup Challenge",
-      description: "Collect plastic waste from beaches and coastal areas, documenting the impact through video evidence.",
+      title: "Community Plastic Clean-Up Drive",
+      description: "Help collect and properly dispose of plastic waste in your local neighborhood or school.",
       icon: Recycle,
-      location: "Venice Beach, Los Angeles",
+      location: "Local Community Center, Abuja",
       timeframe: "April 5-12, 2025",
-      participants: 67,
-      badge: "Intermediate",
+      participants: 50,
+      badge: "Junior",
       category: "Waste Management"
     },
     {
-      id: 3,
-      title: "School Climate Awareness Campaign",
-      description: "Organize and host climate education sessions at local schools to raise awareness among students.",
+      id: 2,
+      title: "School Climate Awareness Talk",
+      description: "Organize a short awareness session at your school about climate change and sustainable habits.",
       icon: Megaphone,
-      location: "Various Schools, Chicago",
-      timeframe: "March 20 - April 15, 2025",
-      participants: 32,
+      location: "Nigerian Secondary Schools",
+      timeframe: "April 20, 2025",
+      participants: 30,
       badge: "Junior",
       category: "Education"
     },
     {
+      id: 3,
+      title: "Eco-Friendly Garden Project",
+      description: "Create a small garden using native plants and composting techniques to support biodiversity.",
+      icon: Leaf,
+      location: "Wuse District, Abuja",
+      timeframe: "May 1-15, 2025",
+      participants: 25,
+      badge: "Intermediate",
+      category: "Urban Greening"
+    },
+    {
       id: 4,
-      title: "River Restoration Project",
-      description: "Help restore local river ecosystems by removing debris and planting native vegetation along riverbanks.",
+      title: "Waste Segregation Challenge",
+      description: "Set up separate bins for biodegradable and non-biodegradable waste in your community and demonstrate proper disposal.",
+      icon: Recycle,
+      location: "Garki Market, Abuja",
+      timeframe: "May 10-20, 2025",
+      participants: 10,
+      badge: "Junior",
+      category: "Waste Management"
+    },
+    {
+      id: 5,
+      title: "DIY Upcycling Workshop",
+      description: "Collect old materials like bottles or cardboard and turn them into useful items (planters, organizers, etc.).",
+      icon: Palette,
+      location: "Abuja",
+      timeframe: "May 25-30, 2025",
+      participants: 30,
+      badge: "Intermediate",
+      category: "Upcycling"
+    },
+    {
+      id: 6,
+      title: "River or Stream Clean-Up Mission",
+      description: "Collect trash and plastics from a nearby stream or drainage to prevent flooding and pollution.",
       icon: Droplet,
-      location: "Mississippi River Trail, Minnesota",
-      timeframe: "April 18-25, 2025",
-      participants: 28,
+      location: "Lagos",
+      timeframe: "June 1-10, 2025",
+      participants: 35,
       badge: "Intermediate",
       category: "Conservation"
     },
     {
-      id: 5,
-      title: "Community Climate Workshop Series",
-      description: "Lead interactive workshops teaching sustainable practices and climate action strategies to community members.",
-      icon: BookOpen,
-      location: "Community Center, Portland",
-      timeframe: "Every Saturday in April",
-      participants: 54,
-      badge: "Major",
-      category: "Education"
+      id: 7,
+      title: "Energy-Saving Campaign",
+      description: "Record and share tips on reducing energy consumption at home or school (turning off lights, unplugging devices).",
+      icon: Lightbulb,
+      location: "Virtual / Home, Abuja",
+      timeframe: "June 15-25, 2025",
+      participants: 50,
+      badge: "Junior",
+      category: "Energy Conservation"
     },
     {
-      id: 6,
-      title: "Neighborhood Garden Network",
-      description: "Create community gardens promoting local food production and green spaces in urban neighborhoods.",
-      icon: Heart,
-      location: "Multiple locations, Seattle",
-      timeframe: "Ongoing - Join Anytime",
-      participants: 89,
+      id: 8,
+      title: "Climate Art & Awareness Project",
+      description: "Create a video or artwork showcasing climate issues in your community and ways to address them.",
+      icon: Video,
+      location: "Digital / Social Media",
+      timeframe: "June 20-30, 2025",
+      participants: 40,
+      badge: "Intermediate",
+      category: "Awareness"
+    },
+    {
+      id: 9,
+      title: "Community Tree Monitoring Mission",
+      description: "Check and record the health of previously planted trees in your community; water and maintain them as needed.",
+      icon: TreePine,
+      location: "Jabi Park, Abuja",
+      timeframe: "July 1-10, 2025",
+      participants: 30,
       badge: "Junior",
-      category: "Urban Greening"
+      category: "Forestry"
     }
   ];
   
