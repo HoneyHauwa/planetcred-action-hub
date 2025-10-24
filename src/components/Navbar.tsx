@@ -32,11 +32,11 @@ const Navbar = () => {
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-1 group">
-            <img src={logo} alt="PlanetCred Logo" className="h-12 w-12 object-contain" />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <img src={logo} alt="PlanetCred Logo" className="h-10 w-10 sm:h-12 sm:w-12 object-contain" />
+            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               PlanetCred
             </span>
           </Link>

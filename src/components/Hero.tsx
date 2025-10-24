@@ -17,21 +17,21 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 relative z-10">
         <div className="max-w-3xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in leading-tight">
             Turn Your Climate Actions Into Certified Impact
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl mx-auto px-2">
             Join youth leaders worldwide making their environmental actions visible, verified, and valuable
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="secondary" size="xl" className="shadow-2xl">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
+            <Button asChild variant="secondary" size="xl" className="shadow-2xl w-full sm:w-auto">
               <Link to="/missions">
                 Explore Missions <ArrowRight className="ml-2" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="xl" className="bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm">
+            <Button asChild variant="outline" size="xl" className="bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm w-full sm:w-auto">
               <a href="#about">Learn More</a>
             </Button>
           </div>
