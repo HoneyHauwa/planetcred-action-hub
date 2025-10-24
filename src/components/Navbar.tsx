@@ -58,12 +58,12 @@ const Navbar = () => {
             >
               Missions
             </Link>
-            <a 
-              href="#about" 
+            <Link 
+              to="/#about" 
               className="font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               About
-            </a>
+            </Link>
             {user && (
               <Link 
                 to="/dashboard" 
