@@ -10,20 +10,40 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   
   const isActive = (path: string) => location.pathname === path;
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
+      if (user) {
+        checkAdminStatus(user.id);
+      }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        checkAdminStatus(session.user.id);
+      } else {
+        setIsAdmin(false);
+      }
     });
 
     return () => subscription.unsubscribe();
   }, []);
+
+  const checkAdminStatus = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId)
+      .eq('role', 'admin')
+      .maybeSingle();
+    
+    setIsAdmin(!!data && !error);
+  };
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -65,14 +85,26 @@ const Navbar = () => {
               About
             </Link>
             {user && (
-              <Link 
-                to="/dashboard" 
-                className={`font-medium transition-colors hover:text-primary ${
-                  isActive("/dashboard") ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                Dashboard
-              </Link>
+              <>
+                <Link 
+                  to="/dashboard" 
+                  className={`font-medium transition-colors hover:text-primary ${
+                    isActive("/dashboard") ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  Dashboard
+                </Link>
+                {isAdmin && (
+                  <Link 
+                    to="/admin" 
+                    className={`font-medium transition-colors hover:text-primary ${
+                      isActive("/admin") ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    Admin Panel
+                  </Link>
+                )}
+              </>
             )}
             {user ? (
               <div className="flex items-center gap-2">
