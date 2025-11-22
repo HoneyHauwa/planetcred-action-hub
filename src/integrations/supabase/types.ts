@@ -129,10 +129,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      get_active_mission_count: {
-        Args: { user_uuid: string }
-        Returns: number
-      }
+      get_active_mission_count: { Args: { user_uuid: string }; Returns: number }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
