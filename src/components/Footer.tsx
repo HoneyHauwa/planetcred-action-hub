@@ -11,11 +11,8 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <div className="sm:col-span-2">
-            <div className="flex items-center gap-1 mb-3 sm:mb-4">
-              <img src={logo} alt="PlanetCred Logo" className="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
-              <span className="text-base sm:text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                PlanetCred
-              </span>
+            <div className="flex items-center mb-3 sm:mb-4">
+              <img src={logo} alt="PlanetCred Logo" className="h-8 sm:h-10 object-contain" />
             </div>
             <p className="text-sm sm:text-base text-muted-foreground max-w-md">
               Empowering youth climate advocates worldwide by turning everyday environmental actions into certified credentials.
