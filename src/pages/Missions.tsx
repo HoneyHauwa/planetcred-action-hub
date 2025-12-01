@@ -1,7 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { User } from "@supabase/supabase-js";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
@@ -10,27 +6,8 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Calendar, Users, TreePine, Recycle, Megaphone, Droplet, Palette, Leaf, Video, Lightbulb } from "lucide-react";
 
 const Missions = () => {
-  const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const handleJoinMission = (title: string, description: string) => {
-    if (!user) {
-      navigate("/auth");
-      return;
-    }
-    navigate(`/mission-submit?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`);
+  const handleJoinMission = () => {
+    window.open("https://chat.whatsapp.com/Db0lPdOMt8kHkAhpFUWDJu", "_blank");
   };
 
   const missions = [
@@ -207,7 +184,7 @@ const Missions = () => {
                 <Button 
                   className="w-full" 
                   variant="hero"
-                  onClick={() => handleJoinMission(mission.title, mission.description)}
+                  onClick={handleJoinMission}
                 >
                   Join Mission
                 </Button>
@@ -221,7 +198,11 @@ const Missions = () => {
             <p className="text-muted-foreground mb-6">
               Can't find a mission near you? Start your own climate action project and earn certification for your initiative!
             </p>
-            <Button variant="green" size="lg">
+            <Button 
+              variant="green" 
+              size="lg"
+              onClick={() => window.open("https://chat.whatsapp.com/Db0lPdOMt8kHkAhpFUWDJu", "_blank")}
+            >
               Propose a Mission
             </Button>
           </div>
